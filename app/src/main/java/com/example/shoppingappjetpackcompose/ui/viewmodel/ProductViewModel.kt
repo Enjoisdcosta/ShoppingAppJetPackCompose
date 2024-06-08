@@ -26,7 +26,7 @@ class ProductViewModel @Inject constructor(
         }
     }
 
-    fun selectProduct(product: ProductsItemModel) {
+    fun selectProduct(product: ProductsItemModel?) {
         _selectedProduct.value = product
     }
 
@@ -35,7 +35,9 @@ class ProductViewModel @Inject constructor(
             it.price = newPrice
             viewModelScope.launch {
                 repository.updateProduct(it)
-                _products.value = repository.getProducts() // Refresh the product list
+                // Refresh the product list
+            //   _products.value = repository.getProducts()
+
             }
         }
     }

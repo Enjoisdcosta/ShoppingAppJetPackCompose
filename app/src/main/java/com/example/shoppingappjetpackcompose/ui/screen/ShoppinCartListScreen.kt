@@ -24,7 +24,7 @@ import com.example.shoppingappjetpackcompose.ui.viewmodel.ProductViewModel
 
 
 @Composable
-fun ShoppingCartList(viewmodel: ProductViewModel = hiltViewModel()){
+fun ShoppingCartList(viewmodel: ProductViewModel = hiltViewModel()) {
     val products by viewmodel.products.collectAsState()
     val selectedProduct by viewmodel.selectedProduct.collectAsState()
 
@@ -32,57 +32,75 @@ fun ShoppingCartList(viewmodel: ProductViewModel = hiltViewModel()){
 
     Column {
         LazyColumn {
-            items(products) { product ->
-                ProductItem(product, onClick = { viewmodel.selectProduct(it) })
-            }
-        }
-
-}
-}
-
-    @Composable
-    fun ProductItem(product: ProductsItemModel, onClick: (ProductsItemModel) -> Unit) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clickable { onClick(product) }
-                .padding(16.dp)
-        ) {
-            product.title?.let { Text(text = it, modifier = Modifier.weight(1f)) }
-            Text(text = "$${product.price}")
-        }
-    }
-
-    @Composable
-    fun EditPriceDialog(product: ProductsItemModel, onPriceChange: (Double) -> Unit, onDismiss: () -> Unit) {
-        var newPrice by remember { mutableStateOf(product.price.toString()) }
-
-        AlertDialog(
-            onDismissRequest = onDismiss,
-            title = { Text(text = "Edit Price") },
-            text = {
-                Column {
-                    TextField(
-                        value = newPrice,
-                        onValueChange = { newPrice = it },
-                        label = { Text("Price") }
-                    )
-                }
-            },
-            confirmButton = {
-                Button(
-                    onClick = {
-                        onPriceChange(newPrice.toDouble())
-                        onDismiss()
+            items(products.size) { index ->
+                products[index]?.let {
+                    ProductItem(product = it) { product ->
+                        viewmodel.selectProduct(product)
                     }
-                ) {
-                    Text("Update")
                 }
-            },
-            dismissButton = {
-                Button(onClick = onDismiss) {
-                    Text("Cancel")
+                selectedProduct?.let { product ->
+                    EditPriceDialog(
+                        product = product,
+                        onPriceChange = { newPrice -> viewmodel.updateProductPrice(newPrice) },
+                        onDismiss = { viewmodel.selectProduct(null) })
+
+
                 }
+
             }
-        )
+        }
     }
+}
+
+
+@Composable
+fun ProductItem(product: ProductsItemModel, onClick: (ProductsItemModel) -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onClick(product) }
+            .padding(16.dp)
+    ) {
+        product.title?.let { Text(text = it, modifier = Modifier.weight(1f)) }
+        Text(text = "$${product.price}")
+    }
+}
+
+@Composable
+fun EditPriceDialog(
+    product: ProductsItemModel,
+    onPriceChange: (Double) -> Unit,
+    onDismiss: () -> Unit
+) {
+    var newPrice by remember { mutableStateOf(product.price.toString()) }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(text = "Edit Price") },
+        text = {
+            Column {
+                TextField(
+                    value = newPrice,
+                    onValueChange = { newPrice = it },
+                    label = { Text("Price") }
+                )
+            }
+        },
+        confirmButton = {
+            Button(
+                onClick = {
+                    onPriceChange(newPrice.toDouble())
+                    onDismiss()
+                }
+            ) {
+                Text("Update")
+            }
+        },
+        dismissButton = {
+            Button(onClick = onDismiss) {
+                Text("Cancel")
+            }
+        }
+    )
+}
+
