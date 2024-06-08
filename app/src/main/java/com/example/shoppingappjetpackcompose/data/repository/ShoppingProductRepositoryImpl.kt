@@ -6,11 +6,17 @@ import com.example.shoppingappjetpackcompose.data.model.product.ProductsItemMode
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class ShoppinProductRepositoryImpl @Inject constructor(
+class ShoppingProductRepositoryImpl @Inject constructor(
     private val apiDetail: APIEndpoints
 ) :ShoppingProductRepository{
-    override suspend fun getProducts(): Flow<List<ProductsItemModel?>?> {
+    override suspend fun getProducts(): List<ProductsItemModel?> {
         return apiDetail.getProducts()
+
+    }
+
+    override suspend fun updateProduct(product: ProductsItemModel): ProductsItemModel {
+
+        return apiDetail.updateProduct(product.id,product)
     }
 
 

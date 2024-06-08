@@ -1,8 +1,9 @@
 package com.example.shoppingappjetpackcompose.di
 
-import com.example.shoppingappjetpackcompose.data.api.APIDetails
 import com.example.shoppingappjetpackcompose.data.api.APIDetails.BASE_URL
 import com.example.shoppingappjetpackcompose.data.api.APIEndpoints
+import com.example.shoppingappjetpackcompose.data.repository.ShoppingProductRepository
+import com.example.shoppingappjetpackcompose.data.repository.ShoppingProductRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,5 +28,11 @@ class MainModule {
     @Singleton
     fun provideCartApiService(retrofit: Retrofit): APIEndpoints {
         return retrofit.create(APIEndpoints::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRepository(apiEndpoints: APIEndpoints ): ShoppingProductRepository{
+        return ShoppingProductRepositoryImpl(apiEndpoints)
     }
 }
