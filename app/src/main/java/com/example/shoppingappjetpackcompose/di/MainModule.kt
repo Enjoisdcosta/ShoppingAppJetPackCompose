@@ -1,6 +1,7 @@
 package com.example.shoppingappjetpackcompose.di
 
 import com.example.shoppingappjetpackcompose.data.api.APIDetails
+import com.example.shoppingappjetpackcompose.data.api.APIDetails.BASE_URL
 import com.example.shoppingappjetpackcompose.data.api.APIEndpoints
 import dagger.Module
 import dagger.Provides
@@ -17,7 +18,7 @@ class MainModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(APIDetails.BASE_URL)
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
