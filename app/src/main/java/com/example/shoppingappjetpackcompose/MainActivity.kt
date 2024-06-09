@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.shoppingappjetpackcompose.ui.screen.MyTopAppBar
 import com.example.shoppingappjetpackcompose.ui.screen.ShoppingCartList
 import com.example.shoppingappjetpackcompose.ui.theme.ShoppingAppJetPackComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,12 +26,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             ShoppingAppJetPackComposeTheme {
 
-                    ShoppingCartList(viewModel())
 
-                }
+                ShoppingCartList(viewModel())
             }
+
         }
     }
+}
+
 
 
 

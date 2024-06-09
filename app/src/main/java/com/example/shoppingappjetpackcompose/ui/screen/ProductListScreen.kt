@@ -20,6 +20,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -51,7 +52,10 @@ fun ShoppingCartList(viewmodel: ProductViewModel = hiltViewModel()) {
 
 
     Column {
+        MyTopAppBar()
         LazyColumn {
+
+
             items(products.size) { index ->
                 products[index]?.let {
                     ProductItem(product = it) { product ->
@@ -228,6 +232,7 @@ fun ProductItem(product: ProductsItemModel, onEditClick: (ProductsItemModel) -> 
             }
         }
     }
+
 }
 
 

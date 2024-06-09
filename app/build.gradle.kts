@@ -91,6 +91,33 @@ dependencies {
 
     implementation ("io.coil-kt:coil-compose:1.3.2")
 
+    //testing dependencies
+    // Unit testing
+    testImplementation ("junit:junit:4.13.2")
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1")
+    testImplementation ("org.mockito:mockito-core:3.11.2")
+    testImplementation ("org.mockito.kotlin:mockito-kotlin:3.2.0")
+    testImplementation ("org.jetbrains.kotlin:kotlin-test-junit:1.5.21")
+
+    // Compose UI testing
+    androidTestImplementation ("androidx.compose.ui:ui-test-junit4:1.0.1")
+    debugImplementation ("androidx.compose.ui:ui-test-manifest:1.0.1")
+
+    // Hilt testing
+    androidTestImplementation ("com.google.dagger:hilt-android-testing:2.38.1")
+    kaptAndroidTest ("com.google.dagger:hilt-compiler:2.38.1")
+
+    // Espresso
+    androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation ("androidx.test.ext:junit:1.1.3")
+
+    // Navigation testing
+    androidTestImplementation ("androidx.navigation:navigation-testing:2.3.5")
+
+
+    //top bar
+    implementation ("androidx.compose.material:material:1.6.7")
+
 
 
 
