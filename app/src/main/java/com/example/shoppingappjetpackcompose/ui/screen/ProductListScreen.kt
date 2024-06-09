@@ -31,10 +31,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberImagePainter
+import com.example.shoppingappjetpackcompose.R
 import com.example.shoppingappjetpackcompose.data.model.product.ProductsItemModel
 import com.example.shoppingappjetpackcompose.ui.viewmodel.ProductViewModel
 
@@ -68,6 +72,7 @@ fun ShoppingCartList(viewmodel: ProductViewModel = hiltViewModel()) {
         }
     }
 }
+
 @Composable
 fun ShoppingCartList1(viewmodel: ProductViewModel = hiltViewModel()) {
     val products by viewmodel.products.collectAsState()
@@ -75,12 +80,12 @@ fun ShoppingCartList1(viewmodel: ProductViewModel = hiltViewModel()) {
 
 
     Column {
+
     }
 }
 
-
 @Composable
-fun ProductItem1(product: ProductsItemModel, onClick: (ProductsItemModel) -> Unit) {
+fun ProductItemTest(product: ProductsItemModel, onClick: (ProductsItemModel) -> Unit) {
     var price by remember { mutableStateOf(product.price) }
     Row(
         modifier = Modifier
@@ -135,6 +140,7 @@ fun EditPriceDialog(
 fun ProductItem(product: ProductsItemModel, onEditClick: (ProductsItemModel) -> Unit) {
     var isEditing by remember { mutableStateOf(false) }
     var price by remember { mutableStateOf(product.price) }
+    val lemonMilk = FontFamily(Font(R.font.lemon_milk_bold))
 
     Card(
         modifier = Modifier
@@ -152,25 +158,35 @@ fun ProductItem(product: ProductsItemModel, onEditClick: (ProductsItemModel) -> 
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .height(250.dp)
-                    .width(250.dp)
-                    .padding(bottom = 8.dp).align(Alignment.CenterHorizontally)
+                    .width(300.dp)
+                    .padding(bottom = 8.dp)
+                    .align(Alignment.CenterHorizontally)
             )
 
             product.title?.let {
                 Text(
                     text = it,
-                    style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
-                    modifier = Modifier.padding(bottom = 4.dp)
+                    style = androidx.compose.ui.text.TextStyle(
+                        fontFamily = lemonMilk,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 15.sp,
+                        color = Color.Black
+                    ),
+                    modifier = Modifier.padding(bottom = 10.dp)
                 )
             }
+
+
 
             product.description?.let {
                 Text(
                     text = it,
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.padding(bottom = 8.dp)
+
                 )
             }
+
 
             if (isEditing) {
                 Column {
@@ -185,18 +201,30 @@ fun ProductItem(product: ProductsItemModel, onEditClick: (ProductsItemModel) -> 
                             onEditClick(product.copy(price = price))
                             isEditing = false
                         },
-                        modifier = Modifier.align(Alignment.End).padding(top = 8.dp)
+                        modifier = Modifier
+                            .align(Alignment.End)
+                            .padding(top = 8.dp)
                     ) {
                         Text("Update")
                     }
                 }
             } else {
-                Text(
-                    text = "Price: $${price}",
-                    style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
-                    color = Color.Black,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
+                Row {
+
+
+                    Text(
+                        text = "Price: $${price}",
+                        style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
+                        color = Color.Black,
+                        modifier = Modifier.padding()
+                    )
+                    Text(
+                        text = "Rating: ${product.rating?.rate} (${product.rating?.count} reviews)",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Color.Black,
+                        modifier = Modifier.padding(horizontal = 30.dp)
+                    )
+                }
             }
         }
     }
