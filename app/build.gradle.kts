@@ -86,11 +86,14 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
 
-
+    //okhttp
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
     implementation ("io.coil-kt:coil-compose:1.3.2")
+
+    //top bar dependency
+    implementation ("androidx.compose.material:material:1.6.7")
 
     //testing dependencies
     // Unit testing
@@ -99,6 +102,16 @@ dependencies {
     testImplementation ("org.mockito:mockito-core:3.11.2")
     testImplementation ("org.mockito.kotlin:mockito-kotlin:3.2.0")
     testImplementation ("org.jetbrains.kotlin:kotlin-test-junit:1.5.21")
+
+    //new
+        testImplementation ("io.mockk:mockk:1.12.0")
+        testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2")
+
+    // For running instrumented tests
+    androidTestImplementation ("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
+
+
 
     // Compose UI testing
     androidTestImplementation ("androidx.compose.ui:ui-test-junit4:1.0.1")
@@ -116,8 +129,6 @@ dependencies {
     androidTestImplementation ("androidx.navigation:navigation-testing:2.3.5")
 
 
-    //top bar dependency
-    implementation ("androidx.compose.material:material:1.6.7")
 
 
 
