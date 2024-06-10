@@ -116,7 +116,7 @@ dependencies {
     androidTestImplementation ("androidx.navigation:navigation-testing:2.3.5")
 
 
-    //top bar
+    //top bar dependency
     implementation ("androidx.compose.material:material:1.6.7")
 
 

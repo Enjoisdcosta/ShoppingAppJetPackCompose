@@ -8,6 +8,9 @@
       <SelectionState runConfigName="testShoppingCartListDisplaysProducts()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="testMyTopAppBar()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>
