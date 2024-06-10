@@ -13,7 +13,7 @@ class ProductListScreenKtTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
-//Test if the list if its getting the current data
+    //Test if the list if its getting the current data
     //Test if the data is being displayed
     //Test if the data exists
     //
@@ -42,13 +42,16 @@ class ProductListScreenKtTest {
                 price = 695.0
             ),
             ProductsItemModel(id = 6, title = "Solid Gold Petite Micropave ", price = 168.0),
-            ProductsItemModel(id = 7, title = "White Gold Plated Princess", price = 9.99))
+            ProductsItemModel(id = 7, title = "White Gold Plated Princess", price = 9.99)
+        )
 
 
-            composeTestRule.onNodeWithText("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops").assertExists()
-            composeTestRule.onNodeWithText("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops").assertIsDisplayed()
-            composeTestRule.onNodeWithText("Mens Casual Premium Slim Fit T-Shirts ").assertExists()
-            composeTestRule.onNodeWithText("Mens Casual Premium Slim Fit T-Shirts ").assertIsDisplayed()
+        composeTestRule.onNodeWithText("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops")
+            .assertExists()
+        composeTestRule.onNodeWithText("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops")
+            .assertIsDisplayed()
+        composeTestRule.onNodeWithText("Mens Casual Premium Slim Fit T-Shirts ").assertExists()
+        composeTestRule.onNodeWithText("Mens Casual Premium Slim Fit T-Shirts ").assertIsDisplayed()
     }
 
     @org.junit.jupiter.api.Test

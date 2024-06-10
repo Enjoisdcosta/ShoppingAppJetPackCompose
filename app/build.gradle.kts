@@ -75,12 +75,12 @@ dependencies {
 
 
     //GSON helps with the serialization of data
-    implementation ("com.google.code.gson:gson:2.10.1")
+    implementation (libs.gson)
 
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-compiler:2.51.1")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation(libs.hilt.android)
+    kapt(libs.dagger.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     //retrofit
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
@@ -104,8 +104,8 @@ dependencies {
     testImplementation ("org.jetbrains.kotlin:kotlin-test-junit:1.5.21")
 
     //new
-        testImplementation ("io.mockk:mockk:1.12.0")
-        testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2")
+    testImplementation ("io.mockk:mockk:1.12.0")
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2")
 
     // For running instrumented tests
     androidTestImplementation ("androidx.test.ext:junit:1.1.3")
