@@ -69,7 +69,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
-    androidTestImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    androidTestImplementation(libs.junit.jupiter)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
@@ -90,26 +90,26 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
 
-    implementation ("io.coil-kt:coil-compose:1.3.2")
+    implementation (libs.coil.compose)
 
     //top bar dependency
-    implementation ("androidx.compose.material:material:1.6.7")
+    implementation (libs.androidx.material)
 
     //testing dependencies
     // Unit testing
-    testImplementation ("junit:junit:4.13.2")
-    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1")
-    testImplementation ("org.mockito:mockito-core:3.11.2")
-    testImplementation ("org.mockito.kotlin:mockito-kotlin:3.2.0")
-    testImplementation ("org.jetbrains.kotlin:kotlin-test-junit:1.5.21")
+    testImplementation (libs.junit)
+    testImplementation (libs.kotlinx.coroutines.test)
+    testImplementation (libs.mockito.core)
+    testImplementation (libs.mockito.kotlin)
+    testImplementation (libs.kotlin.test.junit)
 
     //new
-    testImplementation ("io.mockk:mockk:1.12.0")
-    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2")
+    testImplementation (libs.mockk)
+    testImplementation (libs.kotlinx.coroutines.test.v152)
 
     // For running instrumented tests
-    androidTestImplementation ("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation (libs.androidx.junit.v113)
+    androidTestImplementation (libs.androidx.espresso.core.v340)
 
 
 
