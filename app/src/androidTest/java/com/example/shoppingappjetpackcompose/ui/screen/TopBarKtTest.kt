@@ -10,6 +10,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 
+//test if the text "Screen" is being displayed
+
 @RunWith(AndroidJUnit4::class)
 class TopBarKtTest{
 

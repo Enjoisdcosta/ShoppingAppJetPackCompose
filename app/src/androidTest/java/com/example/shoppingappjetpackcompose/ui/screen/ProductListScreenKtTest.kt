@@ -1,5 +1,6 @@
 package com.example.shoppingappjetpackcompose.ui.screen
 
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import com.example.shoppingappjetpackcompose.data.model.product.ProductsItemModel
@@ -12,7 +13,10 @@ class ProductListScreenKtTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
-
+//Test if the list if its getting the current data
+    //Test if the data is being displayed
+    //Test if the data exists
+    //
     @Test
     fun testShoppingCartListDisplaysProducts() {
         val products = listOf(
@@ -42,7 +46,9 @@ class ProductListScreenKtTest {
 
 
             composeTestRule.onNodeWithText("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops").assertExists()
+            composeTestRule.onNodeWithText("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops").assertIsDisplayed()
             composeTestRule.onNodeWithText("Mens Casual Premium Slim Fit T-Shirts ").assertExists()
+            composeTestRule.onNodeWithText("Mens Casual Premium Slim Fit T-Shirts ").assertIsDisplayed()
     }
 
     @org.junit.jupiter.api.Test
