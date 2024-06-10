@@ -87,8 +87,8 @@ dependencies {
     implementation(libs.converter.gson)
 
     //okhttp
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
 
     implementation ("io.coil-kt:coil-compose:1.3.2")
 
