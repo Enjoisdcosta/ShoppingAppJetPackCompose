@@ -84,7 +84,7 @@ dependencies {
 
     //retrofit
     implementation(libs.retrofit)
-    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation(libs.converter.gson)
 
     //okhttp
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
