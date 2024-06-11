@@ -143,6 +143,12 @@ fun ProductItemTest(product: ProductsItemModel, onClick: (ProductsItemModel) -> 
         ) {
 
             Text(text = "$${product.price}")
+            Text(
+                text = "Rating: ${product.rating?.rate} (${product.rating?.count} reviews)",
+                style = MaterialTheme.typography.bodySmall,
+                color = Color.Black,
+                modifier = Modifier.padding(horizontal = 30.dp)
+            )
         }
     }
 }
