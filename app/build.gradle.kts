@@ -103,7 +103,7 @@ dependencies {
     testImplementation (libs.mockito.kotlin)
     testImplementation (libs.kotlin.test.junit)
 
-    //new
+    //new test
     testImplementation (libs.mockk)
     testImplementation (libs.kotlinx.coroutines.test.v152)
 
@@ -114,19 +114,19 @@ dependencies {
 
 
     // Compose UI testing
-    androidTestImplementation ("androidx.compose.ui:ui-test-junit4:1.0.1")
-    debugImplementation ("androidx.compose.ui:ui-test-manifest:1.0.1")
+    androidTestImplementation (libs.ui.test.junit4)
+    debugImplementation (libs.ui.test.manifest)
 
     // Hilt testing
-    androidTestImplementation ("com.google.dagger:hilt-android-testing:2.38.1")
-    kaptAndroidTest ("com.google.dagger:hilt-compiler:2.38.1")
+    androidTestImplementation (libs.hilt.android.testing)
+    kaptAndroidTest (libs.hilt.compiler.v2381)
 
     // Espresso
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation ("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation (libs.androidx.espresso.core.v340)
+    androidTestImplementation (libs.androidx.junit.v113)
 
     // Navigation testing
-    androidTestImplementation ("androidx.navigation:navigation-testing:2.3.5")
+    androidTestImplementation (libs.androidx.navigation.testing)
 
 
 
