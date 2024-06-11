@@ -58,19 +58,19 @@ fun ShoppingCartList(viewmodel: ProductViewModel = hiltViewModel()) {
 
             items(products.size) { index ->
                 products[index]?.let {
-                    ProductItem(product = it) { product ->
+                    ProductItemTest(product = it) { product ->
                         viewmodel.selectProduct(product)
                     }
 
                 }
-//                selectedProduct?.let { product ->
-//                    EditPriceDialog(
-//                        product = product,
-//                        onPriceChange = { newPrice -> viewmodel.updateProductPrice(newPrice) },
-//                        onDismiss = { viewmodel.selectProduct(null) })
-//
-//
-//                }
+                selectedProduct?.let { product ->
+                    EditPriceDialog(
+                        product = product,
+                        onPriceChange = { newPrice -> viewmodel.updateProductPrice(newPrice) },
+                        onDismiss = { viewmodel.selectProduct(null) })
+
+
+                }
 
             }
         }
@@ -91,14 +91,38 @@ fun ShoppingCartList1(viewmodel: ProductViewModel = hiltViewModel()) {
 @Composable
 fun ProductItemTest(product: ProductsItemModel, onClick: (ProductsItemModel) -> Unit) {
     var price by remember { mutableStateOf(product.price) }
-    Row(
+
+    Card(
         modifier = Modifier
+            .padding(8.dp)
             .fillMaxWidth()
-            .clickable { onClick(product) }
-            .padding(16.dp)
+            .clickable { onClick(product) },
+        shape = RoundedCornerShape(8.dp)
     ) {
-        product.title?.let { Text(text = it, modifier = Modifier.weight(1f)) }
-        Text(text = "$${product.price}")
+
+        Column {
+            Image(
+                painter = rememberImagePainter(data = product.image),
+                contentDescription = product.title,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .height(250.dp)
+                    .width(300.dp)
+                    .padding(bottom = 8.dp)
+                    .align(Alignment.CenterHorizontally)
+            )
+        }
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+
+                .padding(16.dp)
+        ) {
+
+            product.title?.let { Text(text = it, modifier = Modifier.weight(1f)) }
+            Text(text = "$${product.price}")
+        }
     }
 }
 
@@ -196,7 +220,9 @@ fun ProductItem(product: ProductsItemModel, onEditClick: (ProductsItemModel) -> 
                 Column {
                     OutlinedTextField(
                         value = price.toString(),
-                        onValueChange = { newValue -> price = newValue.toDoubleOrNull() ?: price },
+                        onValueChange = { newValue ->
+                            product.price = newValue.toDoubleOrNull() ?: product.price
+                        },
                         label = { Text("Price") },
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -217,7 +243,7 @@ fun ProductItem(product: ProductsItemModel, onEditClick: (ProductsItemModel) -> 
 
 
                     Text(
-                        text = "Price: $${price}",
+                        text = "Price: $${product.price}",
                         style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
                         color = Color.Black,
                         modifier = Modifier.padding()
