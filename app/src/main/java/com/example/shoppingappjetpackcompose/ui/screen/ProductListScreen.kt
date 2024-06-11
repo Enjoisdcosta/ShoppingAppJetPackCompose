@@ -91,6 +91,7 @@ fun ShoppingCartList1(viewmodel: ProductViewModel = hiltViewModel()) {
 @Composable
 fun ProductItemTest(product: ProductsItemModel, onClick: (ProductsItemModel) -> Unit) {
     var price by remember { mutableStateOf(product.price) }
+    val lemonMilk = FontFamily(Font(R.font.lemon_milk_bold))
 
     Card(
         modifier = Modifier
@@ -111,6 +112,19 @@ fun ProductItemTest(product: ProductsItemModel, onClick: (ProductsItemModel) -> 
                     .padding(bottom = 8.dp)
                     .align(Alignment.CenterHorizontally)
             )
+            product.title?.let {
+                Text(
+                    text = it,
+                    style = androidx.compose.ui.text.TextStyle(
+                        fontFamily = lemonMilk,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 15.sp,
+                        color = Color.Black
+                    ),
+                    modifier = Modifier.padding(bottom = 10.dp)
+                )
+            }
+
         }
 
         Row(
@@ -120,7 +134,6 @@ fun ProductItemTest(product: ProductsItemModel, onClick: (ProductsItemModel) -> 
                 .padding(16.dp)
         ) {
 
-            product.title?.let { Text(text = it, modifier = Modifier.weight(1f)) }
             Text(text = "$${product.price}")
         }
     }
