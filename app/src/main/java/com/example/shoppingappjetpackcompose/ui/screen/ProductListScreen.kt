@@ -124,6 +124,14 @@ fun ProductItemTest(product: ProductsItemModel, onClick: (ProductsItemModel) -> 
                     modifier = Modifier.padding(bottom = 10.dp)
                 )
             }
+            product.description?.let {
+                Text(
+                    text = it,
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(bottom = 8.dp)
+
+                )
+            }
 
         }
 
